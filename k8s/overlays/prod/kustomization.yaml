@@ -1,4 +1,4 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.config.k8s.io/v1
 kind: Kustomization
 
 resources:
@@ -6,8 +6,9 @@ resources:
 
 namePrefix: prod-
 
-commonLabels:
-  environment: prod
+labels: 
+  - pairs:
+      environment: prod
 
 
 patches:
