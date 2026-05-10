@@ -12,15 +12,6 @@ spec:
       labels:
         app: user-service
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: workload
-                operator: In
-                values:
-                - app
       containers:
       - name: user-service
         image: mablinov2704/user-service:latest
@@ -30,7 +21,7 @@ spec:
         - name: HTTP_PORT
           value: "8080"
         - name: DB_DSN
-          value: "postgres://user:password@postgres:5432/messager?sslmode=disable"
+          value: "postgres://user:password@dev-postgres:5432/messager?sslmode=disable"
 ---
 apiVersion: v1
 kind: Service
