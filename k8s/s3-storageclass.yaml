@@ -3,6 +3,7 @@ kind: StorageClass
 metadata:
   name: csi-s3
 parameters:
+  endpoint: http://minio:9000
   bucket: messager-uploads
   csi.storage.k8s.io/node-publish-secret-name: csi-s3-secret
   csi.storage.k8s.io/node-publish-secret-namespace: default
@@ -10,6 +11,6 @@ parameters:
   csi.storage.k8s.io/provisioner-secret-namespace: default
   mounter: geesefs
   options: --memory-limit 1000 --dir-mode 0777 --file-mode 0666
-provisioner: ru.yandex.s3.csi  
+provisioner: ru.yandex.s3.csi
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
