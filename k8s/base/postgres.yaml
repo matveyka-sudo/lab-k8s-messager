@@ -12,15 +12,6 @@ spec:
       labels:
         app: postgres
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: workload
-                operator: In
-                values:
-                - system
       containers:
       - name: postgres
         image: postgres:16-alpine
