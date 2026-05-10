@@ -3,10 +3,10 @@ kind: Kustomization
 
 resources:
   - ../../base
-  - ../../s3-storageclass.yaml 
-  - ../../s3-secret.yaml       
 
 namePrefix: dev-
 
-commonLabels:
-  environment: dev
+
+labels:
+- pairs:
+    environment: dev

@@ -2,11 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- postgres.yaml
-- migrate-users.yaml
-- migrate-messages.yaml
-- user-service.yaml
-- message-service.yaml
-- bff.yaml
-- frontend.yaml
-- s3-pvc.yaml
+  - bff.yaml
+  - frontend.yaml
+  - message-service.yaml
+  - migrate-messages.yaml
+  - migrate-users.yaml
+  - postgres.yaml
+  - s3-pvc.yaml
+  - user-service.yaml
+  - s3-secret.yaml
+  - s3-storageclass.yaml
