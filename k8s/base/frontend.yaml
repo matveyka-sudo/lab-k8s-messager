@@ -12,15 +12,6 @@ spec:
       labels:
         app: frontend
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: workload
-                operator: In
-                values:
-                - app
       containers:
       - name: frontend
         image: mablinov2704/frontend:latest
@@ -28,7 +19,7 @@ spec:
         - containerPort: 80
         env:
         - name: BFF_INTERNAL_URL
-          value: "http://bff:8080"
+          value: "http://dev-bff:8080"
         - name: BFF_URL
           value: ""
 ---
