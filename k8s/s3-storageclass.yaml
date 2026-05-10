@@ -10,6 +10,6 @@ parameters:
   csi.storage.k8s.io/provisioner-secret-namespace: default
   mounter: geesefs
   options: --memory-limit 1000 --dir-mode 0777 --file-mode 0666
-provisioner: ch.ctrox.csi.s3-driver # Вот это мы изменили
+provisioner: ru.yandex.s3.csi  
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
