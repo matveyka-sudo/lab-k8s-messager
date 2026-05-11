@@ -1,14 +1,14 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: csi-s3  
+  name: dev-csi-s3  
 parameters:
   endpoint: dev-minio.default.svc.cluster.local:9000
   bucket: messager-uploads
   csi.storage.k8s.io/node-publish-secret-name: dev-csi-s3-secret
-  csi.storage.k8s.io/node-publish-secret-namespace: default
+  csi.storage.k8s.io/node-publish-secret-namespace: kube-system
   csi.storage.k8s.io/provisioner-secret-name: dev-csi-s3-secret
-  csi.storage.k8s.io/provisioner-secret-namespace: default
+  csi.storage.k8s.io/provisioner-secret-namespace: kube-system
   mounter: geesefs
   options: --memory-limit 1000 --dir-mode 0777 --file-mode 0666
 provisioner: ru.yandex.s3.csi
