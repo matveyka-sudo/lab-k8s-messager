@@ -10,5 +10,6 @@ resources:
   - postgres.yaml
   - s3-pvc.yaml
   - user-service.yaml
+  - minio.yaml
   - s3-secret.yaml
   - s3-storageclass.yaml

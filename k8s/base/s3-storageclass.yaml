@@ -3,7 +3,7 @@ kind: StorageClass
 metadata:
   name: csi-s3
 parameters:
-  endpoint: http://minio:9000
+  endpoint: http://dev-minio:9000
   bucket: messager-uploads
   csi.storage.k8s.io/node-publish-secret-name: csi-s3-secret
   csi.storage.k8s.io/node-publish-secret-namespace: default
