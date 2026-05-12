@@ -14,5 +14,5 @@ spec:
         - name: GOOSE_DBSTRING
           value: "postgres://user:password@dev-postgres:5432/messager?sslmode=disable"
         - name: GOOSE_MIGRATION_DIR
-          value: "migrations/message-service"
+          value: "/migrations/message-service"
       restartPolicy: OnFailure
