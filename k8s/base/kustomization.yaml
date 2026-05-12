@@ -17,7 +17,7 @@ resources:
 configMapGenerator:
 - name: messages-migrations-cm
   files:
-  - ../../message-service/migrations/
+  - ./migrations/message-service/  
 - name: users-migrations-cm
   files:
-  - ../../user-service/migrations/
+  - ./migrations/user-service/
