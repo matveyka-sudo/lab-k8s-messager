@@ -13,3 +13,11 @@ resources:
   - minio.yaml
   #- s3-secret.yaml
   #- s3-storageclass.yaml
+
+configMapGenerator:
+- name: messages-migrations-cm
+  files:
+  - ../../migrations/message-service/
+- name: users-migrations-cm
+  files:
+  - ../../migrations/user-service/
