@@ -1,3 +1,7 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate-messages
 spec:
   template:
     spec:
@@ -10,11 +14,11 @@ spec:
         - name: GOOSE_DBSTRING
           value: "postgres://user:password@dev-postgres:5432/messager?sslmode=disable"
         - name: GOOSE_MIGRATION_DIR
-          value: "/migrations" 
-        volumeMounts:        
+          value: "/migrations"
+        volumeMounts:
         - name: sql-files
           mountPath: /migrations
-      volumes:               
+      volumes:
       - name: sql-files
         configMap:
           name: messages-migrations-cm
