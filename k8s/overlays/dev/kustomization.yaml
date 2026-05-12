@@ -3,9 +3,9 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - s3-fix.yaml  
 
 namePrefix: dev-
-
 
 labels:
 - pairs:

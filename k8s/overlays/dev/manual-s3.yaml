@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: dev-s3-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: dev-csi-s3
+  csi:
+    driver: ru.yandex.s3.csi
+    volumeHandle: "messager-uploads" 
+    volumeAttributes:
+      mounter: geesefs
+      endpoint: http://dev-minio.default.svc.cluster.local:9000
+      options: "--memory-limit 1000 --dir-mode 0777 --file-mode 0666"
+    nodePublishSecretRef:
+      name: dev-csi-s3-secret
+      namespace: kube-system
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dev-s3-uploads-pvc
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: dev-csi-s3
+  volumeName: dev-s3-pv

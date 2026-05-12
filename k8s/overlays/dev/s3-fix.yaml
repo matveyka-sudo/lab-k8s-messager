@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: dev-s3-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: dev-csi-s3
+  hostPath:
+    path: /tmp/k8s-uploads
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dev-s3-uploads-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: dev-csi-s3
+  volumeName: dev-s3-pv
