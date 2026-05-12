@@ -17,7 +17,8 @@ resources:
 configMapGenerator:
 - name: messages-migrations-cm
   files:
-  - ./migrations/message-service/  
+  - migrations/message-service/001_init.sql
+  - migrations/message-service/002_add_file_name.sql 
 - name: users-migrations-cm
   files:
-  - ./migrations/user-service/
+  - migrations/user-service/001_init.sql
