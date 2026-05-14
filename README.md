@@ -24,20 +24,25 @@
 ### 1. Клонирование репозитория
 ```bash
 git clone [https://github.com/matveyka-sudo/lab-k8s-messager.git](https://github.com/matveyka-sudo/lab-k8s-messager.git)
-cd lab-k8s-messager```
+cd lab-k8s-messager
+```
 
 ### 2. Установка argo cd
+``` bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f [https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml](https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml)
+```
 
 ### 3. Развёртка через argo cd
 Создайте приложение в Argo CD, которое будет отслеживать папку с оверлеем:
+``` bash
 argocd app create messager-dev \
 --repo [https://github.com/matveyka-sudo/lab-k8s-messager.git](https://github.com/matveyka-sudo/lab-k8s-messager.git) \
 --path k8s/overlays/dev \
 --dest-server [https://kubernetes.default.svc](https://kubernetes.default.svc) \
 --dest-namespace default \
 --sync-policy auto
+```
 
 ### 4. Применение конфигурации
 Нажмите Sync в интерфейсе Argo CD.
@@ -45,15 +50,19 @@ argocd app create messager-dev \
 
 ### 5.Проверка работоспособности
 После успешной синхронизации (статус Synced / Healthy в Argo CD):
-# Проверка, что все компоненты запущены
+### Проверка, что все компоненты запущены
+``` bash
 kubectl get pods
+```
 
-# Проверка, что миграции выполнены (COMPLETIONS 1/1)
+### Проверка, что миграции выполнены (COMPLETIONS 1/1)
+``` bash
 kubectl get jobs
+```
 
-# Доступ к приложению через браузер
+### Доступ к приложению через браузер
+``` bash
 kubectl port-forward svc/dev-frontend 8080:80
+```
 
 
-git clone [https://github.com/matveyka-sudo/lab-k8s-messager.git](https://github.com/matveyka-sudo/lab-k8s-messager.git)
-cd lab-k8s-messager
